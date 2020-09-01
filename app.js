@@ -2,7 +2,7 @@ const express =require('express');
 const app =express();
 const cors = require('cors');
 const bodyParser= require('body-parser');
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 var path = require('path');
  app.use(bodyParser.urlencoded({extended:true}));
  app.use(bodyParser.json());
@@ -11,7 +11,7 @@ const MongoClient = require('mongodb').MongoClient
 app.use(express.static(path.join(__dirname, 'build')));
 
 
- app.get('/', (req, res) => {
+ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 }); 
 //create a server that browsers can listen to.
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   res.send('success');
  });
 
-MongoClient.connect("mongodb://localhost:27017/wheelstovet", { useUnifiedTopology: true })
+/* MongoClient.connect("mongodb://localhost:27017/wheelstovet", { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database');
     const db = client.db('wheelstovet');
@@ -71,9 +71,9 @@ MongoClient.connect("mongodb://localhost:27017/wheelstovet", { useUnifiedTopolog
     })
 
   
-  })
+  }) */
   
-  .catch(error => console.error(error))
+ // .catch(error => console.error(error))
 
 // In Express, we handle a GET request with the get method:
 //app.get(endpoint, callback)
